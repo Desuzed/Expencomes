@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Expencomes</string>
+    <string name="expense">Расходы</string>
+    <string name="income">Доходы</string>
+    <string name="investment">Инвестиции</string>
+    <string name="balance">Баланс</string>
+    <string name="add_income">Добавьте доход</string>
+    <string name="add_expense">Добавьте расход</string>
+    <string name="all_expense">Все расходы</string>
+    <string name="all_income">Все доходы</string>
+    <string name="name_value">Наименование</string>
+    <string name="value">Значение</string>
+    <string name="comment">Комментарий</string>
+    <string name="new_category">Новая категория</string>
+    <string name="show_all_expenses">Просмотреть все расходы</string>
+    <string name="show_all_incomes">Просмотреть все доходы</string>
+
+</resources>
