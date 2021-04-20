@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(MainActivity.BUDGET_TYPE, TYPE_EXPENSE);
         startActivity(intent);
     }
-
+//test commit
     public void onClickAddIncome(View v) {
         Intent intent = new Intent(this, EditActivity.class);
         intent.putExtra(MainActivity.BUDGET_TYPE, TYPE_INCOME);
