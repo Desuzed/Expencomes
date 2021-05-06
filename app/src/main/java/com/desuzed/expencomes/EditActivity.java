@@ -15,7 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.desuzed.expencomes.db.DBManager;
-import com.desuzed.expencomes.model.BudgetItem;
+import com.desuzed.expencomes.model.Item;
 import com.desuzed.expencomes.model.Category;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -138,7 +138,7 @@ public class EditActivity extends AppCompatActivity {
             Toast.makeText(this, "Поля не должны быть пустыми", Toast.LENGTH_SHORT).show();
         }else {
             //TODO long не подходит для очень больших значений
-            BudgetItem i = new BudgetItem(mCategory.getName(), Long.parseLong(value), comment, type);
+            Item i = new Item(mCategory.getName(), Long.parseLong(value), comment, type);
             dbManager.addItem(i);
             Toast.makeText(this, "Nice", Toast.LENGTH_SHORT).show();
             finish();

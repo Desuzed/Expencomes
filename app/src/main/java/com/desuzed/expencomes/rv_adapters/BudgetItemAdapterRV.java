@@ -1,6 +1,5 @@
 package com.desuzed.expencomes.rv_adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.desuzed.expencomes.R;
-import com.desuzed.expencomes.model.BudgetItem;
-import com.desuzed.expencomes.model.Category;
+import com.desuzed.expencomes.model.Item;
 import com.desuzed.expencomes.util.RetrieveDataListener;
 
 import java.util.ArrayList;
 
 public class BudgetItemAdapterRV extends RecyclerView.Adapter<BudgetItemAdapterRV.CustomViewHolder> {
-    private ArrayList<BudgetItem> list;
+    //TODO implement ListAdapter
+    private ArrayList<Item> list;
     private final Context context;
     private RetrieveDataListener listener;
 
-    public BudgetItemAdapterRV(Context context, ArrayList<BudgetItem> list) {
+    public BudgetItemAdapterRV(Context context, ArrayList<Item> list) {
         this.context = context;
         this.list = list;
     }
@@ -36,18 +35,18 @@ public class BudgetItemAdapterRV extends RecyclerView.Adapter<BudgetItemAdapterR
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        BudgetItem item = list.get(position);
+        Item item = list.get(position);
         holder.bind(item);
     }
 
-    public void setList(ArrayList<BudgetItem> list) {
+    public void setList(ArrayList<Item> list) {
         if (list != null){
             this.list = list;
             notifyDataSetChanged();
         }
     }
 
-    public void setBudgetItem (BudgetItem item){
+    public void setBudgetItem (Item item){
         if (item!=null){
             list.add(item);
             notifyItemInserted(list.size()-1);
@@ -71,7 +70,7 @@ public class BudgetItemAdapterRV extends RecyclerView.Adapter<BudgetItemAdapterR
             tvValue = itemView.findViewById(R.id.tvValue);
         }
 
-        public void bind(BudgetItem item) {
+        public void bind(Item item) {
             tvCategoryName.setText(item.getCategory());
             tvValue.setText(String.valueOf(item.getValue()));
         }

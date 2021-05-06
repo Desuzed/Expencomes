@@ -28,7 +28,7 @@ public class CategoryFragment extends Fragment {
     private RecyclerView recyclerView;
     private CategoryAdapterRV adapter;
     private ArrayList<Category> list;
-    private DBManager dbManager;
+   // private DBManager dbManager;
     //  private Button btnCategory;
     private RetrieveDataListener retrieveDataListener;
     private String type;
@@ -54,7 +54,7 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dbManager = new DBManager(getContext());
+       // dbManager = new DBManager(getContext());
         if (getArguments()!=null){
             type = getArguments().getString(MainActivity.BUDGET_TYPE);
         }
@@ -92,7 +92,7 @@ public class CategoryFragment extends Fragment {
                     Toast.makeText(getContext(), "Поля не должны быть пустыми", Toast.LENGTH_SHORT).show();
                 } else {
                     Category c = new Category(categoryName, type, 0);
-                    dbManager.insertCategory(c);
+                 //   dbManager.insertCategory(c);
                     adapter.setCategoryItem(c);
                    // ((EditActivity)getActivity()).getFragContainer().setVisibility(View.GONE);
                     retrieveDataListener.retrieveData(c);
@@ -108,15 +108,15 @@ public class CategoryFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        dbManager.closeDB();
+      //  dbManager.closeDB();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        dbManager.openDB();
-        list = dbManager.getCategoryList(type);
-        adapter.setList(list);
+//        dbManager.openDB();
+//        list = dbManager.getCategoryList(type);
+//        adapter.setList(list);
     }
 
 }

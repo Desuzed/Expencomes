@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.desuzed.expencomes.model.BudgetItem;
+import com.desuzed.expencomes.model.Item;
 import com.desuzed.expencomes.model.Category;
 
 import java.util.ArrayList;
@@ -20,7 +20,6 @@ public class DBManager {
         dbAssistant = new DBAssistant(context);
     }
 
-
     public void insertCategory(Category category) {
         ContentValues cv = new ContentValues();
         cv.put(Constants.COLUMN_CATEGORY, category.getName());
@@ -28,7 +27,7 @@ public class DBManager {
         db.insert(Constants.CATEGORY_TABLE_NAME, null, cv);
     }
 
-    public void addItem(BudgetItem item) {
+    public void addItem(Item item) {
         ContentValues cv = new ContentValues();
         cv.put(Constants.COLUMN_CATEGORY, item.getCategory());
         cv.put(Constants.COLUMN_VALUE, item.getValue());
@@ -52,12 +51,12 @@ public class DBManager {
         return list;
     }
 
-    public ArrayList<BudgetItem> getItemsByCategory(String categoryName) {
-        ArrayList<BudgetItem> list = new ArrayList<>();
+    public ArrayList<Item> getItemsByCategory(String categoryName) {
+        ArrayList<Item> list = new ArrayList<>();
         String selection = Constants.COLUMN_CATEGORY + " =? ";
         Cursor query = db.query(Constants.ITEMS_TABLE_NAME, null, selection, new String[]{categoryName}, null, null, null);
         while (query.moveToNext()) {
-            BudgetItem item = new BudgetItem(
+            Item item = new Item(
                     query.getString(query.getColumnIndex(Constants.COLUMN_CATEGORY)),
                     query.getLong(query.getColumnIndex(Constants.COLUMN_VALUE)),
                     query.getString(query.getColumnIndex(Constants.COLUMN_COMMENT)),
@@ -77,12 +76,12 @@ public class DBManager {
         return total;
     }
 
-    public ArrayList<BudgetItem> getAllItemsList(String searchText) {
-        ArrayList<BudgetItem> list = new ArrayList<>();
+    public ArrayList<Item> getAllItemsList(String searchText) {
+        ArrayList<Item> list = new ArrayList<>();
         String selection = Constants.COLUMN_CATEGORY + " like ?";
         Cursor query = db.query(Constants.ITEMS_TABLE_NAME, null, selection, new String[]{"%" + searchText + "%"}, null, null, null);
         while (query.moveToNext()) {
-            BudgetItem item = new BudgetItem(
+            Item item = new Item(
                     query.getString(query.getColumnIndex(Constants.COLUMN_CATEGORY)),
                     query.getLong(query.getColumnIndex(Constants.COLUMN_VALUE)),
                     query.getString(query.getColumnIndex(Constants.COLUMN_COMMENT)),

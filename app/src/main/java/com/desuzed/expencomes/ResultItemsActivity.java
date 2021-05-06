@@ -10,14 +10,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.desuzed.expencomes.db.DBManager;
-import com.desuzed.expencomes.model.BudgetItem;
+import com.desuzed.expencomes.model.Item;
 import com.desuzed.expencomes.rv_adapters.BudgetItemAdapterRV;
 
 import java.util.ArrayList;
 
 public class ResultItemsActivity extends AppCompatActivity {
-    private ArrayList<BudgetItem> itemsList = new ArrayList<>();
-    private DBManager dbManager;
+    private ArrayList<Item> itemsList = new ArrayList<>();
+    //private DBManager dbManager;
     private BudgetItemAdapterRV adapter;
     private String categoryName;
     @Override
@@ -30,7 +30,7 @@ public class ResultItemsActivity extends AppCompatActivity {
         assert ab != null;
         categoryName = getIntent().getExtras().getString(ResultCategoryActivity.CATEGORY_NAME);
         ab.setTitle(categoryName);
-        dbManager = new DBManager(this);
+       // dbManager = new DBManager(this);
         ab.setDisplayHomeAsUpEnabled(true);
         RecyclerView rv = findViewById(R.id.rvResultItems);
         adapter = new BudgetItemAdapterRV(this, itemsList );
@@ -54,14 +54,14 @@ public class ResultItemsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        dbManager.openDB();
-        itemsList = dbManager.getItemsByCategory(categoryName);
-        adapter.setList(itemsList);
+//        dbManager.openDB();
+//        itemsList = dbManager.getItemsByCategory(categoryName);
+//        adapter.setList(itemsList);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        dbManager.closeDB();
+       // dbManager.closeDB();
     }
 }

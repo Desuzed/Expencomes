@@ -18,9 +18,10 @@ import com.desuzed.expencomes.model.Category;
 import com.desuzed.expencomes.util.RetrieveDataListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CategoryAdapterRV extends RecyclerView.Adapter<CategoryAdapterRV.CustomViewHolder>{
-    private ArrayList <Category> list;
+    private List<Category> list;
     private Context context;
     private RetrieveDataListener listener;
 
@@ -82,7 +83,7 @@ public class CategoryAdapterRV extends RecyclerView.Adapter<CategoryAdapterRV.Cu
 
     }
 
-    public void setList(ArrayList<Category> list) {
+    public void setList(List<Category> list) {
         if (list != null){
             this.list = list;
             notifyDataSetChanged();
