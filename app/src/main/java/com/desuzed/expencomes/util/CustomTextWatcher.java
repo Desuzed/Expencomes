@@ -3,13 +3,37 @@ package com.desuzed.expencomes.util;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-public interface CustomTextWatcher extends TextWatcher {
-    @Override
-    void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2);
+import com.google.android.material.textfield.TextInputLayout;
+
+public class CustomTextWatcher implements TextWatcher {
+    private TextInputLayout textInputLayout;
+
+    public CustomTextWatcher(TextInputLayout textInputLayout) {
+        this.textInputLayout = textInputLayout;
+    }
 
     @Override
-    void onTextChanged(CharSequence charSequence, int i, int i1, int i2);
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        if (charSequence.length() == 0) {
+            textInputLayout.setError("Поле не должно быть пустым");
+            textInputLayout.setErrorEnabled(true);
+        } else {
+            textInputLayout.setErrorEnabled(false);
+        }
+    }
 
     @Override
-    void afterTextChanged(Editable editable);
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        if (charSequence.length() == 0) {
+            textInputLayout.setError("Поле не должно быть пустым");
+            textInputLayout.setErrorEnabled(true);
+        } else {
+            textInputLayout.setErrorEnabled(false);
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+    }
 }

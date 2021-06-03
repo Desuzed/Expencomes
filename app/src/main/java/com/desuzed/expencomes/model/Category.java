@@ -11,10 +11,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity(tableName = Constants.CATEGORY_TABLE_NAME)
-public class Category  {
+public class Category implements Serializable  {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = Constants._ID)
-    private int id;
+    private long id;
     @NonNull
     @ColumnInfo(name = Constants.COLUMN_CATEGORY)
     private String name;
@@ -52,11 +52,19 @@ public class Category  {
         return totalValue;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public void setTotalValue(long totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
     }
 }

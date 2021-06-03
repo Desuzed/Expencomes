@@ -14,5 +14,7 @@
     <string name="new_category">Новая категория</string>
     <string name="show_all_expenses">Просмотреть все расходы</string>
     <string name="show_all_incomes">Просмотреть все доходы</string>
+    <string name="title_menu_edit">Редактировать</string>
+    <string name="title_menu_delete">Удалить</string>
 
 </resources>

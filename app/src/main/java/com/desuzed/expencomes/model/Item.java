@@ -10,7 +10,7 @@ import com.desuzed.expencomes.db.Constants;
 import java.io.Serializable;
 
 @Entity(tableName = Constants.ITEMS_TABLE_NAME)
-public class Item {
+public class Item implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     @NonNull

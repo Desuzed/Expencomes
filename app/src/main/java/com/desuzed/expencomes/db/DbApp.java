@@ -21,7 +21,7 @@ public abstract class DbApp extends RoomDatabase {
 
     private static volatile DbApp INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     static DbApp getDatabase(final Context context) {
@@ -30,7 +30,7 @@ public abstract class DbApp extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             DbApp.class, Constants.DB_FILE_NAME)
-                            .addCallback(roomDatabaseCallback)
+                          //  .addCallback(roomDatabaseCallback)
                             .build();
                 }
             }
@@ -48,9 +48,16 @@ public abstract class DbApp extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
-                Category c = new Category("TestCategory", MainActivity.TYPE_INCOME, 0);
+                Category c = new Category("TestCategory1", MainActivity.TYPE_INCOME, 0);
                 CategoryDAO cDao = INSTANCE.categoryDao();
                 cDao.insertCategory(c);
+
+                Category c2 = new Category("TestCategory2", MainActivity.TYPE_INCOME, 0);
+                cDao.insertCategory(c2);
+                Category c3 = new Category("TestCategory3", MainActivity.TYPE_INCOME, 0);
+                cDao.insertCategory(c3);
+                Category c4 = new Category("TestCategory4", MainActivity.TYPE_INCOME, 0);
+                cDao.insertCategory(c4);
             });
         }
     };

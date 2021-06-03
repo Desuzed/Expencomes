@@ -13,18 +13,28 @@ import java.util.List;
 
 public class ItemViewModel extends AndroidViewModel {
     private RepositoryApp repo;
-    private final LiveData<List<Item>> allItems;
     public ItemViewModel(@NonNull Application application) {
         super(application);
         repo = new RepositoryApp(application);
-        allItems = repo.getAllItems();
     }
 
-    public LiveData<List<Item>> getAllCategories() {
-        return allItems;
+    public LiveData<List<Item>> getAllItems() {
+        return repo.getAllItems();
+    }
+
+    public LiveData<List<Item>> getItemsByCategory(String categoryName){
+        return repo.getItemsByCategory(categoryName);
     }
 
     public void insertItem (Item i){
         repo.insertItem(i);
+    }
+
+    public void deleteItem(Item item){
+        repo.deleteItem(item);
+    }
+
+    public void updateItemsWithNewCategory (String newCategoryName, String oldCategoryName){
+        repo.updateItemsWithNewCategory(newCategoryName, oldCategoryName);
     }
 }
